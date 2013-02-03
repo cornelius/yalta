@@ -1,29 +1,34 @@
 <h2>Conference Overview</h2>
 
-<ul>
-<li><%= link_to "Presentations", :controller => "presentations", :action =>
-"index" %></li>
-<li><%= link_to "Tracks", :controller => "tracks", :action => "index" %></li>
-<li><%= link_to "People", :controller => "people", :action => "index" %></li>
-<li><%= link_to "New submission", :controller => "submission", :action => "new"
-%></li>
-<li><%= link_to "Show untagged", :controller => "submission",
-  :action => "show_untagged" %></li>
-<% if current_user and current_user.is_admin? %>
-<li><%= link_to "Export Presentations as Text", :controller => "submission",
-:action => "export_text"
-%></li>
-<li><%= link_to "Export Notification Mail Script",
-  :action => "export_acceptance_notification" %></li>
-</li>
-<li><%= link_to "Export Speaker List", :controller => "schedule",
-  :action => "slots_as_csv" %></li>
-</li>
-<% if current_conference.schedule %>
-<li><%= link_to "Export Web Pages", :controller => "web_pages",
-  :action => "program",
-  :key => current_conference.schedule.key %></li>
-</li>
+<% if current_conference %>
+  <ul>
+  <li><%= link_to "Presentations", :controller => "presentations", :action =>
+  "index" %></li>
+  <li><%= link_to "Tracks", :controller => "tracks", :action => "index" %></li>
+  <li><%= link_to "People", :controller => "people", :action => "index" %></li>
+  <li><%= link_to "New submission", :controller => "submission", :action =>
+"new"
+  %></li>
+  <li><%= link_to "Show untagged", :controller => "submission",
+    :action => "show_untagged" %></li>
+  <% if current_user and current_user.is_admin? %>
+  <li><%= link_to "Export Presentations as Text", :controller => "submission",
+  :action => "export_text"
+  %></li>
+  <li><%= link_to "Export Notification Mail Script",
+    :action => "export_acceptance_notification" %></li>
+  </li>
+  <li><%= link_to "Export Speaker List", :controller => "schedule",
+    :action => "slots_as_csv" %></li>
+  </li>
+  <% if current_conference.schedule %>
+  <li><%= link_to "Export Web Pages", :controller => "web_pages",
+    :action => "program",
+    :key => current_conference.schedule.key %></li>
+  </li>
+  <% end %>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No conference created yet</p>
 <% end %>
-<% end %>
-</ul>

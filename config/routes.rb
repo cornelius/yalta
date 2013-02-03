@@ -58,7 +58,11 @@ Yalta::Application.routes.draw do
 
 
   # Yalta routes
-  
+
+  get   '/login', :to => 'account#login'
+  match '/auth/:provider/callback', :to => 'account#callback'
+  match '/auth/failure', :to => 'account#failure'
+
   namespace :admin do
     resources :users
     resources :presentation_types

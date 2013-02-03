@@ -24,19 +24,5 @@ href="http://wiki.openid.net/OpenIDServers">OpenID Wiki</a>.</p>
 <p>Invitation code: <%= session[:invitation_code] %></p>
 <% end %>
 
-<% form_for :x, :url => { :action=> "login" } do |form| %>
-
-  <label for="openid_url">Please enter your OpenID:</label>
-  <input type="text" name="openid_url" id="openid_url" size="30" value="">
-  <input type="submit" name="login" value="Login">
-
-<% end %>
-
-<% form_for :x, :url => { :action=> "login" } do |form| %>
-
-  <label for="openid_url">Use your Google login:</label>
-  <input type="hidden" name="openid_url" id="openid_url" size="30"
-    value="https://www.google.com/accounts/o8/id">
-  <input type="submit" name="login" value="Login">
-
-<% end %>
+<%= link_to "Log in", "/auth/open_id" %><br/>
+<%= link_to "Log in with Google", "/auth/google" %>
