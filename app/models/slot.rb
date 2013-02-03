@@ -4,6 +4,9 @@ class Slot < ActiveRecord::Base
 
   has_one :presentation
 
+  attr_accessible :date, :start, :duration, :room_id, :text, :schedule_id,
+    :primitive
+
   def end
     start + duration.minutes
   end

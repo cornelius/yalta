@@ -37,3 +37,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'pothoven-attachment_fu'
+gem 'acts_as_taggable_on_steroids'
