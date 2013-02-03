@@ -1,6 +1,6 @@
 <%= error_messages_for :picture %>
 
-<% form_for(:picture, :url => { :action => "create", :person_id => @person_id },
+<%= form_for(:picture, :url => { :action => "create", :person_id => @person_id },
                       :html => { :multipart => true }) do |f| -%>
   <p>
     <label for="picture">Upload A Picture:</label>

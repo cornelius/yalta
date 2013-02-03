@@ -7,6 +7,8 @@ class Conference < ActiveRecord::Base
 
   has_one :schedule
 
+  attr_accessible :name
+
   def to_s
     self.name
   end

@@ -6,7 +6,7 @@
 
 <%= error_messages_for :person %>
 
-<% form_for :person, :url => { :action => :save_add_author,
+<%= form_for :person, :url => { :action => :save_add_author,
   :presentation => @presentation } do |f| %>
   <p>
     <b>Name</b><br />
@@ -30,7 +30,7 @@
 
 <h2>Select existing author</h2>
 
-<% form_tag :action => "save_add_existing_author",
+<%= form_tag :action => "save_add_existing_author",
   :presentation => @presentation do %>
 
   <table>

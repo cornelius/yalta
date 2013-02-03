@@ -10,7 +10,7 @@ module PeopleHelper
             :action => "show", :id => p.id
         links.push link
       end
-      return links.join( ", " )
+      return links.join( ", " ).html_safe
     end
   end
 

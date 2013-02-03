@@ -6,7 +6,7 @@ class Person < ActiveRecord::Base
 
   belongs_to :conference
 
-  attr_accessible :name
+  attr_accessible :name, :email, :bio, :conference
   
   def full_email
     if self.name

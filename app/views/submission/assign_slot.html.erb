@@ -4,7 +4,7 @@
 
 <% if @schedule %>
 
-<% form_tag( :action => "save_assign_slot", :id => @presentation ) do %>
+<%= form_tag( :action => "save_assign_slot", :id => @presentation ) do %>
 
   <p>
     <%= radio_button_tag "slot", 0, @presentation.slot == nil %>

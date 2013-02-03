@@ -9,20 +9,23 @@ class ScheduleController < ApplicationController
   end
 
   def create
-    schedule = Schedule.new params[:conference]
+    schedule = Schedule.new
     schedule.day_count = params[:day_count]
     schedule.room_count = params[:room_count]
     schedule.slot_length = params[:slot_length]
     schedule.conference = current_conference
-    schedule.save!
 
     start_date = Date.new(
       params[:conference]["start(1i)"].to_i,
       params[:conference]["start(2i)"].to_i,
       params[:conference]["start(3i)"].to_i )
+    schedule.start = start_date
+    
+    schedule.save!
 
     schedule.create_schedule start_date, params[:day_count].to_i,
       params[:room_count].to_i, params[:slot_length].to_i, params[:scheme]
+
 
     redirect_to :action => "all"
   end

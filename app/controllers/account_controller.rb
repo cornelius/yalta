@@ -85,9 +85,6 @@ class AccountController < ApplicationController
     redirect_to "/"
   end
     
-  def welcome
-  end
-
   def sorry_admin
   end
 
@@ -95,18 +92,6 @@ class AccountController < ApplicationController
     flash[:error] = "Sorry, only invited users have access to the site."
     clear_login
     redirect_to :action => :login
-  end
-
-  def new_user
-    current_user.attributes = params[:user]
-  end
-
-  def update_new_user
-    if current_user.update_attributes(params[:user])
-      redirect_back_or_default "/"
-      return
-    end
-    render :template => 'account/new_user'
   end
 
   private

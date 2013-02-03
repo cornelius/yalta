@@ -2,7 +2,7 @@
 
 <p><b>Presentation:</b> <%= @presentation.title %></p>
 
-<% form_tag( :action => "save_assign_type", :id => @presentation ) do %>
+<%= form_tag( :action => "save_assign_type", :id => @presentation ) do %>
   <table>
 
   <% @presentation_types.each do |type| %>

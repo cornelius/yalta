@@ -10,4 +10,6 @@ class Picture < ActiveRecord::Base
 
   belongs_to :person
 
+  attr_accessible :uploaded_data
+  
 end

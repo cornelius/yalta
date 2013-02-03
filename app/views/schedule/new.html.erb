@@ -1,6 +1,6 @@
 <h2>Create new schedule</h2>
 
-<% form_tag :action => "create" do %>
+<%= form_tag :action => "create" do %>
 <p>Scheme: <%= select_tag "scheme", options_for_select( @schemes ) %></p>
 <p>Start date: <%= date_select "conference", "start" %></p>
 <p>Number of days: <%= text_field_tag :day_count, 2, :size => 3 %></p>

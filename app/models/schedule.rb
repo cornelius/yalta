@@ -1,3 +1,5 @@
+require "utils.rb"
+
 class Schedule < ActiveRecord::Base
 
   has_many :slots
@@ -119,7 +121,8 @@ class Schedule < ActiveRecord::Base
       else
         (1..room_count).each do |track|
           Slot.create :date => day, :start => time, :duration => slot_length,
-            :room_id => track, :text => "<em>Presentation</em>", :schedule_id => self.id
+            :room_id => track, :text => "<em>Presentation</em>",
+            :schedule_id => self.id
         end
 
         time += slot_length.minutes

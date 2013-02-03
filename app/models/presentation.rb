@@ -11,6 +11,8 @@ class Presentation < ActiveRecord::Base
   belongs_to :slot
   belongs_to :presentation_type
 
+  attr_accessible :title, :abstract, :notes
+  
   def rating_by user
     ratings = Comment.find_all_by_user_id user, :conditions => {
       :rated => true, :presentation_id => self.id }

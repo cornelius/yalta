@@ -2,7 +2,7 @@
 
 <%= error_messages_for :presentation %>
 
-<% form_for :presentation, @presentation,
+<%= form_for :presentation,
             :url => { :action => :create } do |f| %>
   <p>
     <b>Author</b><br />

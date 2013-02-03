@@ -20,7 +20,7 @@ module SlotsHelper
     if slot.presentation
       slot.presentation.title
     else
-      slot.text
+      slot.text.html_safe
     end
   end
 

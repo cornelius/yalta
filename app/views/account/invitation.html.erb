@@ -4,7 +4,7 @@
 site. Please enter your invitation code below and then login with your OpenID.
 </p>
 
-<% form_tag :action => "accept_invitation" do %>
+<%= form_tag :action => "accept_invitation" do %>
 Your invitation code:
 <%= text_field_tag :token, params[:token], :size => 25 %>
 <%= submit_tag "Accept Invitation" %>

@@ -60,6 +60,10 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
 
     respond_to do |format|
+      params_user = params[:user]
+      @user.admin = params_user[:admin]
+      params_user.delete :admin
+      @user.admin = params
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
         format.html { redirect_to [:admin,@user] }

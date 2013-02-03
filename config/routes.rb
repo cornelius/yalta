@@ -66,6 +66,7 @@ Yalta::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :presentation_types
+
   end
 
   resources :conferences
@@ -77,6 +78,9 @@ Yalta::Application.routes.draw do
   root :to => "conference#index"
 
   match "web_pages/:action.php" => "web_pages"
+
+  match 'admin/base/:action' => "admin/base#:action"
+  match 'admin/invitations/:action' => "admin/invitations#:action"
 
   match ':controller/:action' => ":controller#:action"
   

@@ -2,7 +2,7 @@
 
 <%= error_messages_for :presentation_type %>
 
-<% form_for [:admin,@presentation_type] do |f| %>
+<%= form_for [:admin,@presentation_type] do |f| %>
   <p>
     <b>Name</b><br />
     <%= f.text_field :name %>
