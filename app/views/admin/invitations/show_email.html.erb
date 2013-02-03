@@ -1,0 +1,10 @@
+<h2>Invitation Email</h2>
+
+<%= link_to "Back to invitations list", :action => "index" %>
+
+<p>Invitation for <%= link_to h(@invitation.full_email),
+  "mailto:#{@invitation.full_email}" %></p>
+
+<pre>
+<%= h @mail %>
+</pre>

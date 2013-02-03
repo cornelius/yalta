@@ -1,0 +1,37 @@
+<h2>Assign Slot</h2>
+
+<p><b>Presentation:</b> <%= @presentation.title %></p>
+
+<% if @schedule %>
+
+<% form_tag( :action => "save_assign_slot", :id => @presentation ) do %>
+
+  <p>
+    <%= radio_button_tag "slot", 0, @presentation.slot == nil %>
+    <label for="slot_0"><em>No Slot Assigned</em></label>
+  </p>
+
+  <table><tr>
+    <% @schedule.days.each do |day| %>
+      <td>
+        <%= render :partial => "schedule/day", :locals => { :day => day } %>
+      </td>
+    <% end %>
+  </tr></table>
+
+  <p>
+    <%= check_box_tag "swap" %>
+    <label for="swamp">Swap slots</label>
+  </p>
+
+  <p><%= submit_tag "Assign Slot" %></p>
+
+  <%= hidden_field_tag "go_back", params[:go_back] %>
+
+<% end %>
+
+<% else %>
+
+<p><em>No schedule yet</em></p>
+
+<% end %>

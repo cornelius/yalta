@@ -1,0 +1,21 @@
+<h1>Listing presentation types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% for presentation_type in @presentation_types %>
+  <tr>
+    <td><%= presentation_type.name %></td>
+
+    <td><%= link_to 'Show', [:admin,presentation_type] %></td>
+    <td><%= link_to 'Edit', edit_admin_presentation_type_path(presentation_type) %></td>
+    <td><%= link_to 'Destroy', [:admin,presentation_type], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New presentation type', new_admin_presentation_type_path %>

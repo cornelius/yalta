@@ -1,0 +1,41 @@
+<h2>Invitations</h2>
+
+<p>
+<% form_tag :action => "add" do %>
+Enter email address to create new invitation:
+<%= text_field_tag :full_email, "", :size => 60 %>
+<%= submit_tag "Create Invitation" %>
+<% end %>
+</p>
+
+<h3>All Invitations</h3>
+<p>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Conference</th>
+  <th>Sent At</th>
+  <th>Expires At</th>
+  <th>Accepted At</th>
+
+  <th>Actions</th>
+</tr>
+<% @invitations.each do |i| %>
+<tr>
+  <td><%= h i.name %></td>
+  <td><%= link_to i.email, "mailto:#{i.email}" %></td>
+  <td><%= i.conference %></td>
+  <td><%= i.sent_at %></td>
+  <td><%= i.expires_at %></td>
+  <td><%= i.accepted_at %></td>
+
+  <td>
+    <%= link_to "Show", :action => "show", :id => i.id %>
+    <%= link_to "Show Email", :action => "show_email", :id => i.id %>
+    <%= link_to "Resend", :action => "send_email", :id => i.id %>
+  </td>
+</tr>
+<% end %>
+</table>
+</p>

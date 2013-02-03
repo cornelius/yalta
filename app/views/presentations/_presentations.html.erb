@@ -1,0 +1,65 @@
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Authors</th>
+    <th>Title</th>
+    <th>Slot</th>
+    <th>Track</th>
+    <th>Rating</th>
+    <th>Average</th>
+    <th>My Rating</th>
+  </tr>
+
+<% rank = 1 %>
+<% for presentation in presentations %>
+  <tr>
+    <td>
+      <%= rank %>
+      <% rank += 1 %>
+    </td>
+    <td>
+      <%= author_links presentation.people %>
+    </td>
+    <td>
+      <% if presentation.title.empty? %>
+        <%= link_to "<em>No Title</em>", presentation %>
+      <% else %>
+        <%= link_to h(presentation.title), presentation %>
+      <% end %>
+    </td>
+    <td>
+      <% if presentation.slot %>
+        <%= slot_date_time presentation.slot %>
+      <% else %>
+      <% end %>
+    </td>
+    <td class="<%= track_class presentation.track %>">
+      <% if presentation.track %>
+        <%= presentation.track.title %>
+      <% else %>
+      <% end %>
+    </td>
+    <td><%= presentation.rating %></td>
+    <td><%= presentation.average_rating %></td>
+    <% my_rating = presentation.rating_by current_user %>
+    <% if my_rating %>
+      <td><%= my_rating %></td>
+    <% else %>
+      <td class="no">Not rated</td>
+    <% end %>
+    <td><%= link_to 'Slot', :controller => "submission",
+      :action => "assign_slot", :id => presentation,
+      :go_back => "/presentations" %></td>
+    <td><%= link_to 'Track', :controller => "submission",
+      :action => "assign_track", :id => presentation,
+      :go_back => "/presentations" %></td>
+    <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
+    <% if current_user.is_admin? %>
+      <td>
+      <%= link_to 'Remove', { :action => :destroy, :id => presentation },
+        :confirm => "Delete Presentation?", :method => :delete %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

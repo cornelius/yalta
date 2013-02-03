@@ -1,0 +1,25 @@
+<h2>Assign Track</h2>
+
+<p><b>Presentation:</b> <%= @presentation.title %></p>
+
+<% form_tag( :action => "save_assign_track", :id => @presentation ) do %>
+  <table>
+
+  <tr><td>
+    <%= radio_button_tag "track", 0, @presentation.track == nil %>
+    <label for="track_0"><em>No Track Assigned</em></label>
+  </td></tr>
+  <% @tracks.each do |track| %>
+    <tr><td class="<%= track_class track %>">
+      <%= radio_button_tag "track", track.id, @presentation.track == track %>
+      <label for="<%= "track_#{track.id}" %>"><%= track.title %></label>
+    </td></tr>
+  <% end %>
+
+  </table>
+
+  <p><%= submit_tag "Assign Track" %></p>
+
+  <%= hidden_field_tag "go_back", params[:go_back] %>
+
+<% end %>

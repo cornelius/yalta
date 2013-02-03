@@ -1,0 +1,32 @@
+<p>
+  <b>Openid url:</b>
+  <%=h @user.openid_url %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%=h @user.admin %>
+</p>
+
+<p>
+  <b>Invited:</b>
+  <%=h @user.invited %>
+</p>
+
+<p>
+  <b>Display name:</b>
+  <%=h @user.display_name %>
+</p>
+
+<p>
+  <b>Email address:</b>
+  <%=h @user.email_address %>
+</p>
+
+<p>
+  <b>Conference:</b>
+  <%=h @user.current_conference %>
+</p>
+
+<%= link_to 'Edit', edit_admin_user_path(@user) %> |
+<%= link_to 'Back', admin_users_path %>

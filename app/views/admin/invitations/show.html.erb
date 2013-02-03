@@ -1,0 +1,25 @@
+<h2>Show Invitation</h2>
+
+<p>
+<table>
+<% for column in Invitation.columns %>
+  <tr>
+    <td><b><%= column.human_name %></b></td>
+    <% if column.name == "user_id" and @invitation.user %>
+      <td><%= @invitation.user.name %> (<%= @invitation.user.openid_url %>)</td>
+    <% else %>
+      <td><%= @invitation.send column.name %></td>
+    <% end %>
+  </tr>
+<% end %>
+  <tr>
+    <td><b>URL</b></td>
+    <td><%= link_to invitation_url(@invitation), invitation_url(@invitation) %></td>
+  </tr>
+</table>
+</p>
+
+<p>
+<%= link_to "All invitations", :controller => "admin/invitations",
+  :action => "index" %>
+</p>

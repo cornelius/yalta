@@ -1,0 +1,49 @@
+<table>
+
+  <tr>
+    <th colspan="<%= @schedule.room_count + 1 %>"><%= day %></th>
+  </tr>
+
+  <tr>
+    <th>Time</th>
+    <% (1..@schedule.room_count).each do |room| %>
+      <th>Room <%= room %></th>
+    <% end %>
+  </tr>
+
+  <% @schedule.slots_by_day(day).each do |slot| %>
+
+    <% classes = Array.new %>
+    <% if !track_class( slot.track ).empty? %>
+      <% classes.push track_class( slot.track ) %>
+    <% end %>
+    <% if slot == @active_slot %>
+      <% classes.push "active" %>
+    <% end %>
+    <% if @show_availability and slot.available? %>
+      <% classes.push "available" %>
+    <% end %>
+    <% class_string = classes.join " " %>
+
+    <% if slot.room_id == 0 %>
+      <tr>
+        <td><%= slot_time slot %></td>
+        <td colspan="<%= @schedule.room_count %>" class="<%= class_string %>">
+          <%= render :partial => @slot_content, :locals => { :slot => slot } %>
+        </td>
+      </tr>
+    <% else %>
+      <% if slot.room_id == 1 %>
+        <tr>
+          <td><%= slot_time slot %></td>
+      <% end %>
+      <td class="<%= class_string %>">
+        <%= render :partial => @slot_content, :locals => { :slot => slot } %>
+      </td>
+      <% if slot.room_id == @schedule.room_count %>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+
+</table>

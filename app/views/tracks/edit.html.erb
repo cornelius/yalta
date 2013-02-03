@@ -1,0 +1,25 @@
+<h2>Edit Track <%= @track.title %></h2>
+
+<%= error_messages_for :track %>
+
+<% form_for(@track) do |f| %>
+
+  <p><b>Title:</b> <%= f.text_field :title %></p>
+
+  <p><b>Color:</b>
+  <table>
+    <tr><td>
+      <%= radio_button_tag "track[color_style]", 0, @track.color_style == nil %>
+      <label for="color_style_0"><em>No color assigned</em></label>
+    <% (1..8).each do |color| %>
+      <tr><td class='<%= "track_#{color}" %>'>
+        <%= radio_button_tag "track[color_style]", color,
+          color.to_s == @track.color_style %>
+        <label for="<%= "color_style_#{color}" %>">Select me</label>
+      </td></tr>
+    <% end %>
+  </table>
+  
+  <p><%= f.submit "Save" %></p>
+  
+<% end %>

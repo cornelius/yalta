@@ -1,0 +1,7 @@
+<% if slot.presentation %>
+  <%= link_to slot_title( slot ), "presentation/#{slot.presentation.id}.php" %>
+  <br/>
+  <em><%= author_list slot.presentation.people %></em>
+<% else %>
+  <%= slot_title slot %>
+<% end %>

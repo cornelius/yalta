@@ -1,0 +1,40 @@
+<p>
+  <b>Name:</b>
+  <%=h @person.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @person.email %>
+</p>
+
+<p>
+  <b>About:</b>
+<pre>
+<%=h @person.bio %>
+</pre>
+</p>
+
+<p>
+<b>Picture:</b>
+<br/>
+<% if @person.picture %>
+  <%= full_picture_tag @person %>
+  <%= thumb_picture_tag @person %>
+  <%= mini_picture_tag @person %>
+<% else %>
+  <em>No picture</em><br/>
+<% end %>
+<%= link_to 'Upload Picture', :controller => "pictures", :action => "new",
+  :person_id => @person %>
+</p>
+
+<b>Presentations:</b>
+<% if !@person.presentations.empty? %>
+  <% @person.presentations.each do |presentation| %>
+    <p><%= link_to presentation.title, presentation %></p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

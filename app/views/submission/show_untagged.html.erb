@@ -1,0 +1,18 @@
+<h2>Untagged presentations</h2>
+
+<p><%= @presentations.size %> submissions</p>
+
+<table>
+  <tr>
+    <th>Author</th>
+    <th>Title</th>
+  </tr>
+
+<% for presentation in @presentations %>
+  <tr>
+    <td><%= link_to presentation.people.first.name, :controller => "people",
+    :action => "show", :id => presentation.people.first.id %></td>
+    <td><%= link_to presentation.title, presentation %></td>
+  </tr>
+<% end %>
+</table>

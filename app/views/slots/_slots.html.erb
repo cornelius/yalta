@@ -1,0 +1,25 @@
+<% columns = [ "date", "start", "duration", "text", "room_id", "schedule_id" ] %>
+
+<table>
+
+<tr>
+  <% columns.each do |c| %>
+    <th><%= c %></th>
+  <% end %>
+</tr>
+
+<% @slots.each do |slot| %>
+  <tr>
+    <% columns.each do |c| %>
+      <td>
+        <% if c == "start" %>
+          <%= compact_time slot.start %>
+        <% else %>
+          <%= slot.send c %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+
+</table>

@@ -1,0 +1,11 @@
+<h2>Schedule from <%= @schedule.start %> to <%= @schedule.end %></h2>
+
+<table><tr>
+  <% @schedule.days.each do |day| %>
+    <td>
+      <%= render :partial => "day", :locals => { :day => day } %>
+    </td>
+  <% end %>
+</tr></table>
+
+<p><%= link_to "Export Schedule", :action => "export" %></p>

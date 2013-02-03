@@ -1,0 +1,28 @@
+<?php
+  $page_title = '<%= @presentation.title %>';
+  $site_root='../../';
+  include "header.inc";
+?>
+
+<p><b>Speaker:</b> <a href="#bio"><%= @presentation.speaker.name %></a></p>
+
+<%= text2html @presentation.abstract %>
+
+<a name="bio"/>
+<h2><%= @presentation.speaker.name %></h2>
+
+<% if @presentation.speaker.picture %>
+<p><img src="../photos/<%= @presentation.speaker.picture.id %>"
+  alt="[<%= @presentation.speaker.name %>]" class="speakerphoto" /></p>
+<% else %>
+<!--
+<p><img src="../photos/xxx" alt="[speaker.name]" class="speakerphoto" /></p>
+-->
+<% end %>
+
+<%= text2html @presentation.speaker.bio %>
+
+<br clear="all" />
+<?php
+  include "footer.inc";
+?>

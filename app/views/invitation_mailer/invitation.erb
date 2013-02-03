@@ -1,0 +1,22 @@
+<% if @invitation.name -%>
+Dear <%= @invitation.name %>,
+<% else -%>
+Dear user,
+<% end -%>
+
+you are invited to the Akademy Conference Planning System.
+
+To accept the invitation please click on this link:
+
+<%= @invitation_url %>
+
+Alternatively you can also go to <%= @invitation_url_base %> and manually enter
+your invitation code there. Your invitation code is:
+
+<%= @invitation.token %>
+
+I hope that everything works fine. If you have problems, feel free to contact
+me.
+
+Best Regards,
+Cornelius Schumacher

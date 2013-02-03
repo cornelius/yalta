@@ -1,0 +1,8 @@
+<h2>Add Tags</h2>
+
+<p><b>Title:</b><%= @presentation.title %></p>
+
+<% form_tag( :action => "save_add_tags", :id => @presentation.id ) do %>
+<%= text_field_tag :tags %>
+<%= submit_tag "Add Tags" %>
+<% end %>

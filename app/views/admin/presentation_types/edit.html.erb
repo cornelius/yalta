@@ -1,0 +1,17 @@
+<h1>Editing presentation type</h1>
+
+<%= error_messages_for :presentation_type %>
+
+<% form_for [:admin,@presentation_type] do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [:admin,@presentation_type] %> |
+<%= link_to 'Back', admin_presentation_types_path %>

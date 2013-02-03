@@ -1,0 +1,27 @@
+<%= error_messages_for :current_user %>
+
+<h2>Welcome New User</h2>
+
+<p>You have logged in with the OpenID <em><%= current_user.openid_url %></em>
+for the first time. Please set up your account.</p>
+
+<% if current_user.ambiguous_url %>
+<p>Warning! You have previously used the OpenID
+<em><%= current_user.ambiguous_url %></em> which only differs in the HTTP
+protocol part. This will be considered a different user. Log out and use the
+other OpenID URL, if this is not what you intended.</p>
+<% end %>
+
+<% form_for :user, :url => { :action => :update_new_user } do |form| %>
+  <label>
+    Display Name:
+    <%= form.text_field :display_name, { :value => current_user.display_name} %>
+  </label>
+
+  <label>
+    Email Address:
+    <%= form.text_field :email_address, {:value => current_user.email_address} %>
+  </label>
+
+  <%= submit_tag %>
+<% end %>

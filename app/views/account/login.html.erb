@@ -1,0 +1,42 @@
+<h2>Login</h2>
+
+<p>You can login to this site using an <a href="http://openid.net">OpenID</a>.
+OpenID is a decentralized open authentication system which gives the user
+full control over his identity.</p>
+
+<p>If you have an account at <a href="http://www.blogger.com">Blogger</a>, <a
+href="http://www.wordpress.com">Wordpress</a>, <a
+href="http://www.yahoo.com">Yahoo</a>, <a href="http://www.aol.com">AOL</a>, <a
+href="http://www.flickr.com">Flickr</a>, <a
+href="http://www.google.com">Google</a>, or some other sites, you already have
+an
+OpenID, as those sites act as OpenID provider and allow to use accounts managed
+there as OpenID.</p>
+
+<p>You can also easily create an OpenID at one of the specialized OpenID
+providers like <a href="http://myopenid.com">myOpenID</a>, <a
+href="http://claimid.com">claimID</a> or <a
+href="http://pip.versisignlabs.com">Verisign Labs</a>. An extensive list of
+OpenID providers you can find in the <a
+href="http://wiki.openid.net/OpenIDServers">OpenID Wiki</a>.</p>
+
+<% if session[:invitation_code] %>
+<p>Invitation code: <%= session[:invitation_code] %></p>
+<% end %>
+
+<% form_for :x, :url => { :action=> "login" } do |form| %>
+
+  <label for="openid_url">Please enter your OpenID:</label>
+  <input type="text" name="openid_url" id="openid_url" size="30" value="">
+  <input type="submit" name="login" value="Login">
+
+<% end %>
+
+<% form_for :x, :url => { :action=> "login" } do |form| %>
+
+  <label for="openid_url">Use your Google login:</label>
+  <input type="hidden" name="openid_url" id="openid_url" size="30"
+    value="https://www.google.com/accounts/o8/id">
+  <input type="submit" name="login" value="Login">
+
+<% end %>

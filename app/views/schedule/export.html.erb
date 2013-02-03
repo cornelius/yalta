@@ -1,0 +1,7 @@
+<table><tr>
+  <% @schedule.days.each do |day| %>
+    <td>
+      <%= render :partial => "day", :locals => { :day => day } %>
+    </td>
+  <% end %>
+</tr></table>

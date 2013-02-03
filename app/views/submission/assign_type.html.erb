@@ -1,0 +1,20 @@
+<h2>Assign Type</h2>
+
+<p><b>Presentation:</b> <%= @presentation.title %></p>
+
+<% form_tag( :action => "save_assign_type", :id => @presentation ) do %>
+  <table>
+
+  <% @presentation_types.each do |type| %>
+    <tr><td>
+      <%= radio_button_tag "type", type.id,
+        @presentation.presentation_type == type %>
+      <label for="<%= "type_#{type.id}" %>"><%= type.name %></label>
+    </td></tr>
+  <% end %>
+
+  </table>
+
+  <p><%= submit_tag "Assign Type" %></p>
+
+<% end %>

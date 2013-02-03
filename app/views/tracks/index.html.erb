@@ -1,0 +1,57 @@
+<%= link_to "New Track", :action => "new" %>
+
+<h2>Tracks</h2>
+
+<% @tracks.each do |track| %>
+  <h3>
+    <span class="<%= track_class track %>">&nbsp;</span>
+    <%= track.title %>
+    <span class="actions">
+      <%= link_to "Edit", :action => "edit", :id => track %>
+    </span>
+    <span class="actions">
+      <%= link_to "Delete", track, :confirm => "Are you sure?",
+        :method => :delete %>
+    </span>
+    <span class="actions">
+      <%= link_to "Export slotted", :action => "export", :id => track,
+        :slotted => true %>
+    </span>
+    <span class="actions">
+      <%= link_to "Export all", :action => "export", :id => track %>
+    </span>
+  </h3>
+
+  <% if track.presentations.empty? %>
+    <em>No presentations assigned</em>
+  <% else %>
+    <p><%= track.presentations.size %> presentations</p>
+    <table>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Slot</th>
+        <th>Actions</th>
+      </tr>
+      <% track.sorted_presentations.each do |presentation| %>
+        <tr>
+          <td><%= author_links presentation.people %></td>
+          <td><%= link_to presentation.title, presentation %></td>
+          <td><%= presentation.rating %></td>
+          <td>
+            <% if presentation.slot %>
+              <%= slot_date_time presentation.slot %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "[Slot]", :controller => "submission",
+              :action => "assign_slot", :id => presentation,
+              :go_back => "/tracks" %>
+          </td>
+        </li>
+      <% end %>
+    </table>
+  <% end %>
+
+<% end %>

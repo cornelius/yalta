@@ -1,0 +1,30 @@
+Hi <%= @speaker.given_name %>,
+
+we are happy to inform you that your presentation for Akademy 2008 titled
+
+  <%= @presentation.title %>
+  
+has been accepted. It is tentatively scheduled for <%= @presentation.slot.date.strftime("%a, %d %b %Y") %>.
+Please check the schedule for confirmation and additional details which will
+be published soon.
+
+<% if @speaker.bio.blank? -%>
+Please send us a short text about you as biographical info to be published
+the conference web site.
+<% end -%>
+<% if !@speaker.picture -%>
+<% if @speaker.bio.blank? -%>
+
+It would also be nice, if you could send us a picture of yourself which can
+be published on the web site as well.
+<% else -%>
+We are still missing a picture of yourself for publication on the web site.
+It would be great, if you could send us one.
+
+<% end -%>
+<% end -%>
+We are looking forward to meet you at Akademy. If you have any questions
+please feel free to contact us.
+
+For the Akademy 2008 conference program committee,
+<%= @sender.name %>

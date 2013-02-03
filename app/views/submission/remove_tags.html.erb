@@ -1,0 +1,14 @@
+<h2>Add Tags</h2>
+
+<p><b>Title:</b><%= @presentation.title %></p>
+
+<table>
+<tr><th>Tag</th></tr>
+<% @presentation.tag_list.each do |tag| %>
+<tr>
+  <td><%= tag %></td>
+  <td><%= link_to "[Remove]", :action => "save_remove_tags",
+    :tags => tag, :id => @presentation.id %></td>
+</tr>
+<% end %>
+</table>

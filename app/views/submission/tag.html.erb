@@ -1,0 +1,21 @@
+<h2>Presentations tagged with '<%= @tag %>'</h2>
+
+<p><%= @presentations.size %> submissions</p>
+
+<table>
+  <tr>
+    <th>Author</th>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Tags</th>
+  </tr>
+
+<% for presentation in @presentations %>
+  <tr>
+    <td><%= author_links presentation.people %></td>
+    <td><%= link_to presentation.title, presentation %></td>
+    <td><%= presentation.rating %></td>
+    <td><%= tag_list presentation %></td>
+  </tr>
+<% end %>
+</table>

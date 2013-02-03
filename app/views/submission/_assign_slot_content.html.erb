@@ -1,0 +1,7 @@
+<%= radio_button_tag "slot", slot.id, @presentation.slot == slot %>
+<label for="<%= "slot_#{slot.id}" %>">
+  <%= slot_title slot %>
+  <% if slot.presentation %>
+    <em>(<%= author_list slot.presentation.people %>)</em>
+  <% end %>
+</label>

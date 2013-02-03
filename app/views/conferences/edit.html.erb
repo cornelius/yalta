@@ -1,0 +1,17 @@
+<h1>Editing conference</h1>
+
+<%= error_messages_for :conference %>
+
+<% form_for(@conference) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @conference %> |
+<%= link_to 'Back', conferences_path %>

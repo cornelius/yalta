@@ -1,14 +1,62 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Yalta</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Presentations: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'yalta' %>
 </head>
 <body>
 
-<%= yield %>
+<h1><%= current_conference %> - Conference Planner</h1>
+
+<hr/>
+
+<div id="login_info">
+<% if current_user %>
+  Logged in as 
+  <%= link_to current_user.name, :controller => "/user", :action => "show_me" %>
+  <% if current_user.is_admin? %>(admin)<% end %>
+  <%= link_to "Logout", :controller => "/account", :action => "logout" %>
+<% else %>
+  <%= link_to "Login", :controller => "/account", :action => "login" %>
+<% end %>
+</div>
+
+<% if current_user and current_user.is_admin? %>
+<%= link_to "Conferences", :controller => "/conferences", :action => "index" %>
+|
+<% end %>
+<%= link_to "Overview", :controller => "/conference", :action => "index" %>
+|
+<%= link_to "New Submission", :controller => "/submission", :action => "new" %>
+|
+<%= link_to "Presentations", :controller => "/presentations", :action => "index" %>
+|
+<%= link_to "Speakers", :controller => "/people", :action => "index" %>
+|
+<%= link_to "Tracks", :controller => "/tracks", :action => "index" %>
+|
+<%= link_to "Tag Cloud", :controller => "/submission", :action => "tag_cloud" %>
+|
+<%= link_to "Schedule", :controller => "/schedule" %>
+<% if current_user and current_user.is_admin? %>
+|
+<%= link_to "Admin", :controller => "/admin/base" %>
+<% end %>
+
+<hr/>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield  %>
+
+<hr/>
+
+<div id="footer">
+Yalta by <a href="mailto:schumacher@kde.org">Cornelius Schumacher</a>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,62 @@
+<h1>Add author</h1>
+
+<p><b>Presentation:</b> <%= @presentation.title %></b></p>
+
+<h2>New author</h2>
+
+<%= error_messages_for :person %>
+
+<% form_for :person, :url => { :action => :save_add_author,
+  :presentation => @presentation } do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>About:</b><br />
+    <%= f.text_area :bio, :cols => 80, :rows => 25 %>
+  </p>
+
+  <p>
+    <%= f.submit "Add new" %>
+  </p>
+<% end %>
+
+<h2>Select existing author</h2>
+
+<% form_tag :action => "save_add_existing_author",
+  :presentation => @presentation do %>
+
+  <table>
+
+  <tr><td>
+    <%= radio_button_tag "track", 0, true %>
+    <label for="track_0"><em>No person selected</em></label>
+  </td></tr>
+  <% @people.each do |person| %>
+    <tr>
+      <td>
+        <%= radio_button_tag "person", person.id %>
+        <label for="<%= "person_#{person.id}" %>"><%= person.name %></label>
+      </td>
+      <td><%= mini_picture_tag person %></td>
+      <td><%= person.email %></td>
+      <td>
+        <% if !person.bio.blank? %>
+          <%= person.bio[0..80] %>...
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+  </table>
+
+  <p><%= submit_tag "Add from selection" %></p>
+
+<% end %>

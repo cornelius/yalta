@@ -1,0 +1,12 @@
+<h2>New Track</h2>
+
+<%= error_messages_for :track %>
+
+<% form_for(@track) do |f| %>
+
+  <p><b>Title:</b> <%= f.text_field :title %></p>
+  
+  <p><%= f.submit "Create Track" %></p>
+  
+<% end %>
+

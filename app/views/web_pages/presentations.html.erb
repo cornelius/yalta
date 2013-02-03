@@ -1,0 +1,6 @@
+<ul>
+<% @presentations.each do |presentation| %>
+  <li><%= link_to "#{presentation.title} (#{presentation.speaker.name})",
+    "presentation/#{presentation.id}.php" %></li>
+<% end %>
+</ul>

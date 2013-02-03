@@ -1,0 +1,27 @@
+<h1>Editing presentation</h1>
+
+<%= error_messages_for :presentation %>
+
+<% form_for(@presentation) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title, :size => 80 %>
+  </p>
+
+  <p>
+    <b>Abstract</b><br />
+    <%= f.text_area :abstract, :cols => 80, :rows => 25 %>
+  </p>
+
+  <p>
+    <b>Notes</b><br/>
+    <%= f.text_area :notes, :cols => 80, :rows => 5 %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @presentation %> |
+<%= link_to 'Back', presentations_path %>

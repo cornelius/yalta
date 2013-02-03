@@ -1,0 +1,26 @@
+<% if @schedule %>
+  <% if @schedule.day_count > 1 %>
+    <p><%= link_to "Schedule from #{@schedule.start} to #{@schedule.end}",
+      :action => "all" %></p>
+    <ul>
+    <% @schedule.days.each do |day| %>
+      <li><%= link_to day, :action => "day", :date => day %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <p><%= link_to "Schedule for #{@schedule.start}", :action => "day",
+      :date => @schedule.start %></p>
+  <% end %>
+<% else %>
+<p><em>No Schedule yet</em></p>
+<% end %>
+
+<% if current_user.is_admin? %>
+  <% if @schedule %>
+    <%= link_to "Destroy schedule", { :action => "delete" },
+      :confirm => 'Are you sure?' %> <br/>
+  <% else %>
+    <%= link_to "Create new schedule", :action => "new" %> <br/>
+  <% end %>
+  <%= link_to "All slots", :controller => "slots" %> 
+<% end %>

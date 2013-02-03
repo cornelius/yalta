@@ -1,0 +1,62 @@
+<h1>Listing people</h1>
+
+<p><%= @people.size %> speakers.</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Bio</th>
+    <th>Picture</th>
+    <th>Slot</th>
+    <th>Presentations</th>
+  </tr>
+
+<% for person in @people %>
+  <tr>
+    <td><%= mini_picture_tag person %></td>
+    <td><%= link_to person.name, person %></td>
+    <td><%= link_to person.email, "mailto:#{person.email}" %></td>
+    <% if person.slotted? %>
+      <% if person.bio.blank? %>
+        <td class="no">No</td>
+      <% else %>
+        <td class="yes">Yes</td>
+      <% end %>
+      <% if person.picture %>
+        <td class="yes">Yes</td>
+      <% else %>
+        <td class="no">No</td>
+      <% end %>
+      <td>Yes</td>
+    <% else %>
+      <% if person.bio.blank? %>
+        <td>No</td>
+      <% else %>
+        <td>Yes</td>
+      <% end %>
+      <% if person.picture %>
+        <td>Yes</td>
+      <% else %>
+        <td>No</td>
+      <% end %>
+      <td></td>
+    <% end %>
+    <td>
+      <%= presentation_links person.presentations %>
+    </td>
+    <td><%= link_to 'Edit', edit_person_path(person) %></td>
+    <% if current_user.is_admin? %>
+      <td>
+      <%= link_to 'Remove', { :action => :destroy, :id => person },
+        :confirm => "Delete Person?", :method => :delete %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New person', new_person_path %>

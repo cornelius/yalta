@@ -1,0 +1,12 @@
+<p>
+<ul>
+<li><%= link_to "List of presentations", :action => "presentations" %></li>
+<li><%= link_to "List of speakers", :action => "speakers" %></li>
+</ul>
+</p>
+
+<% @schedule.days.each do |day| %>
+  <p>
+  <%= render :partial => "schedule/day", :locals => { :day => day } %>
+  </p>
+<% end %>

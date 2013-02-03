@@ -1,0 +1,38 @@
+<%= error_messages_for :user %>
+
+<% form_for [:admin,@user] do |f| %>
+  <p>
+    <b>Openid url</b><br />
+    <%= f.text_field :openid_url %>
+  </p>
+
+  <p>
+    <b>Admin</b><br />
+    <%= f.check_box :admin %>
+  </p>
+
+  <p>
+    <b>Invited</b><br />
+    <%= f.check_box :invited %>
+  </p>
+
+  <p>
+    <b>Display name</b><br />
+    <%= f.text_field :display_name %>
+  </p>
+
+  <p>
+    <b>Email address</b><br />
+    <%= f.text_field :email_address %>
+  </p>
+
+  <p>
+    <b>Conference</b><br />
+    <%= select "user", "current_conference_id",
+      Conference.find(:all).collect { |p| [p.name,p.id] } %>
+  </p>
+  
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

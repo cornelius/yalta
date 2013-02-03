@@ -1,0 +1,12 @@
+<% @presentations.each do |presentation| -%>
+= <%= presentation.title %>
+
+<% if presentation.people.size == 1 -%>
+Speaker:<% else -%>
+Speakers:<% end -%>
+<%= author_list presentation.people %>
+
+<%= presentation.abstract %>
+
+
+<% end %>

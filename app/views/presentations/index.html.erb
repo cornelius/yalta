@@ -1,0 +1,19 @@
+<h1>Listing presentations</h1>
+
+<p><%= @presentations.size %> submissions</p>
+
+<% @presentations_map.each do |presentation_type,presentations| %>
+
+  <h2>
+    <% if presentation_type %>
+      <%= presentation_type.name %>
+    <% else %>
+      No Type
+    <% end %>
+  </h2>
+
+  <p><%= presentations.size %> submissions</p>
+
+  <%= render :partial => "presentations", :object => presentations %>
+
+<% end %>

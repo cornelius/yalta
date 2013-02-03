@@ -1,0 +1,127 @@
+<% @presentation.people.each do |p| %>
+  <% if p.picture %>
+    <div class="speaker_pic">
+      <%= thumb_picture_tag p %>
+      <br/>
+      <% if @presentation.people.size > 1 %>
+        <%= p.name %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<p>
+  <b>Authors:</b>
+  <%= author_links @presentation.people, :email => true %>
+  <%= link_to "[Add author]", :controller => :people,
+    :action => :add_author, :id => @presentation %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @presentation.title %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= tag_list @presentation %>
+  <%= link_to "[Add tags]", :controller => "submission", :action => "add_tags",
+    :id => @presentation.id %>
+  <%= link_to "[Remove tags]", :controller => "submission",
+    :action => "remove_tags",
+    :id => @presentation.id %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= show_rating @presentation.rating %>
+</p>
+
+<p>
+  <b>Presentation Type:</b>
+  <% if @presentation.presentation_type %>
+    <%= @presentation.presentation_type.name %>
+  <% else %>
+    <em>No type assigned</em>
+  <% end %>
+  <%= link_to "[Assign type]", :controller => "submission",
+    :action => :assign_type, :id => @presentation %>
+</p>
+
+<p>
+  <b>Track:</b>
+  <% if !@presentation.track %>
+    <em>Not assigned to a track</em>
+  <% else %>
+    <span class="<%= track_class @presentation.track %>">
+      <%= @presentation.track.title %>
+    </span>
+  <% end %>
+  <%= link_to "[Assign Track]", :controller => "submission",
+    :action => "assign_track", :id => @presentation %>
+</p> 
+
+<p>
+  <b>Slot:</b>
+  <% if !@presentation.slot %>
+    <em>Not slot assigned</em>
+  <% else %>
+    <%= slot_date_time @presentation.slot %>
+  <% end %>
+  <%= link_to "[Assign Slot]", :controller => "submission",
+    :action => "assign_slot", :id => @presentation %>
+</p> 
+
+<p>
+  <b>Abstract:</b>
+<pre>
+<%=h @presentation.abstract %>
+</pre>
+</p>
+
+<% if @presentation.notes and !@presentation.notes.empty? %>
+<p>
+  <b>Notes:</b><br/>
+<pre>
+<%= h @presentation.notes %>
+</pre>
+</p>
+<% end %>
+
+<% if !@presentation.comments.blank? %>
+  <p><b>Comments:</b>
+  <% @presentation.comments.each do |comment| %>
+    <p class="comment_header">
+      <%= comment.user.name %> (<%= comment.created_at %>):
+      <% if comment.user == current_user %>
+        <span class="delete_link">
+          <%= link_to "Delete Comment", { :action => "delete_comment",
+            :id => @presentation.id, :comment_id => comment.id },
+            :confirm => "Do you really want to delete this comment?" %>
+        </span>
+      <% end %>
+    </p>
+    <% if comment.rated %>
+      <p>Rating: <%= show_rating comment.rating %></p>
+    <% end %>
+    <% if !comment.text.empty? %>
+      <p class="comment">
+        <%= comment.text %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<p>
+<b>New Comment:</b><br/>
+<% form_for :comment, @comment, :url => { :action => "add_comment",
+  :id => @presentation.id } do |f| %>
+<%= f.text_area :text, :cols => 80, :rows => 10 %>
+<br/>
+<%= f.select :rating, [ "no rating", "+2", "+1", "0", "-1", "-2" ] %>
+<%= f.submit "Add Comment" %>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_presentation_path(@presentation) %> |
+<%= link_to 'Back', presentations_path %>
