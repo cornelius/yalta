@@ -1,0 +1,26 @@
+# Yalta - conference planning application
+
+This is the stub for a conference planning application. It was used a couple
+of years ago for planning Akademy as an internal tool. The code base here
+represents a first stab at making it work again with a current Rails version.
+
+Treat the code as broken for now, don't expect it to work without some serious
+polishing.
+
+Yalta serves as a planning tool for a conference program committee. It features:
+
+* Submitting presentation proposals
+* Commenting and rating of proposals
+* Creating a conference schedule
+* Manage conference tracks
+* Assigning presentations to slots in the schedule
+* Manage speaker information including photos
+* Provide overview about missing data
+* Export to a static HTML schedule
+
+Most of it works, but there are some remaining issues due to the incomplete port
+to current Rails.
+
+If you have any questions or comments, please let me know.
+
+Cornelius Schumacher <schumacher@kde.org>
