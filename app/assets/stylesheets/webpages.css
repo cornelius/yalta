@@ -1,0 +1,161 @@
+/* Scaffold */
+
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+/* Yalta */
+
+div#footer {
+  text-align: right;
+}
+
+td {
+  padding: 4px;
+  border: 1px solid black;
+  vertical-align: top;
+}
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+
+div#login_info {
+  float: right;
+}
+
+td.yes {
+  background-color: green
+}
+
+td.no {
+  background-color: red
+}
+
+td.active {
+  border: 3px solid black;
+}
+
+td.available {
+  border: 3px solid red;
+}
+
+div.speaker_pic {
+  float: right;
+}
+
+p.comment_header {
+  background-color: #eee;
+}
+
+span.delete_link {
+  float: right;
+}
+
+span.actions {
+  font-size: small;
+  font-weight: normal;
+}
+
+.track_1 { /* asia */
+  background-color: #EEEE44;
+}
+
+.track_2 { /* kde4 */
+  background-color: #ADD8E6
+}
+
+.track_3 { /* community */
+  background-color: #F0A0A0
+}
+
+.track_4 { /* crossdesktop */
+  background-color: #84EE42
+}
+
+.track_5 { /* programming */
+  background-color: #A0F0F0
+}
+
+.track_6 { /* applications */
+  background-color: #A0EEB5
+}
+
+.track_7 { /* keynote */
+  background-color: #F7AE66
+}
+
+.track_8 { /* kernel */
+  background-color: #D6C8EE
+}
