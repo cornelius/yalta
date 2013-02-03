@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+default_conference:
+  name: My first conference
+  id: 1
+
+one:
+  name: One
+  
+two:
+  name: Two
+  

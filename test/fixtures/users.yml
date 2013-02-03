@@ -1,0 +1,24 @@
+invited:
+  openid_url: http://123.example.com/
+  admin: false
+  email_address: 123@example.com
+  display_name: "Hans Wurst"
+  invited: true
+  current_conference_id: 1
+  
+admin:
+  openid_url: http://admin.example.com/
+  admin: true
+  email_address: admin@example.com
+  display_name: "Super-Hans"
+  invited: true
+  current_conference_id: 1
+  
+one:
+  openid_url: http://123456.example.com/
+  admin: false
+  email_address: 123456@example.com
+  display_name: "Hans Schinken"
+  invited: true
+  current_conference_id: 1
+  
