@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PresentationsControllerTest < Test::Unit::TestCase
+class PresentationsControllerTest < ActionController::TestCase
 
   fixtures :users
 

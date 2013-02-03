@@ -114,7 +114,7 @@
 
 <p>
 <b>New Comment:</b><br/>
-<% form_for :comment, @comment, :url => { :action => "add_comment",
+<% form_for :comment, :url => { :action => "add_comment",
   :id => @presentation.id } do |f| %>
 <%= f.text_area :text, :cols => 80, :rows => 10 %>
 <br/>

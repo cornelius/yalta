@@ -40,3 +40,4 @@ gem 'jquery-rails'
 
 gem 'pothoven-attachment_fu'
 gem 'acts_as_taggable_on_steroids'
+gem 'dynamic_form'

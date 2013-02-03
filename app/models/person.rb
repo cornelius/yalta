@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
 
   belongs_to :conference
 
+  attr_accessible :name
+  
   def full_email
     if self.name
       "#{self.name} <#{self.email}>"

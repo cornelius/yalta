@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class SubmissionControllerTest < Test::Unit::TestCase
+class SubmissionControllerTest < ActionController::TestCase
 
   def setup
     @controller = SubmissionController.new

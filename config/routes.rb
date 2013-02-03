@@ -74,6 +74,8 @@ Yalta::Application.routes.draw do
 
   match "web_pages/:action.php" => "web_pages"
 
+  match ':controller/:action' => ":controller#:action"
+  
   match ':controller/:action/:id'
   match ':controller/:action/:id.:format'
 

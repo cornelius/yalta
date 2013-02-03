@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 
-class Admin::UsersControllerTest < Test::Unit::TestCase
+class Admin::UsersControllerTest < ActionController::TestCase
 
   def setup
     @controller = Admin::UsersController.new
